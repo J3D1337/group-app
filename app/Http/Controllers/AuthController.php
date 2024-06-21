@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RequestResponse;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -49,6 +50,10 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        dd($request);
+        $user = User::create($request->validated());
+
+        auth()->login($user);
+
+        return redirect()->intended('dashboard');
     }
 }

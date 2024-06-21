@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,6 +11,7 @@
     <title>@yield('title')</title>
   </head>
   <body>
+    @includeWhen($navbar, 'include.navbar')
     @include('include.alert')
     @yield('content')
 
