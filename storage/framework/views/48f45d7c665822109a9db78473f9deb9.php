@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,6 +11,10 @@
     <title><?php echo $__env->yieldContent('title'); ?></title>
   </head>
   <body>
+    <?php
+        $navbar = $navbar ?? true;
+    ?>
+    <?php echo $__env->renderWhen($navbar, 'include.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])); ?>
     <?php echo $__env->make('include.alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->yieldContent('content'); ?>
 

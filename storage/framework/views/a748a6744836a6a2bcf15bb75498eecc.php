@@ -10,35 +10,37 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-                @auth
+                <?php if(auth()->guard()->check()): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">#</a>
                     </li>
-                @endauth
+                <?php endif; ?>
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0 pe-5">
-                @auth
+                <?php if(auth()->guard()->check()): ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ auth()->user()->username }}
+                            <?php echo e(auth()->user()->username); ?>
+
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                            <li><a class="dropdown-item" href="<?php echo e(route('logout')); ?>">Logout</a></li>
                         </ul>
                     </li>
-                @else
+                <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login.show') }}">Login</a>
+                        <a class="nav-link" href="<?php echo e(route('login.show')); ?>">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register.show') }}">Register</a>
+                        <a class="nav-link" href="<?php echo e(route('register.show')); ?>">Register</a>
                     </li>
-                @endauth
+                <?php endif; ?>
             </ul>
         </div>
     </div>
 </nav>
+<?php /**PATH D:\laravel\group-app\resources\views/include/navbar.blade.php ENDPATH**/ ?>
