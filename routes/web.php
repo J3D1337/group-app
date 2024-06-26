@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Middleware\isAdmin;
 
 
 Route::get('/', function () {
@@ -29,12 +30,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', AuthController::class . '@logout')
         ->name('logout');
 
-    Route::get('/dashboard', AdminController::class . '@dashboard')
+        Route::get('/dashboard', AdminController::class . '@dashboard')
         ->name('dashboard');
 
-    Route::resource('users', UserController::class);
+        Route::resource('users', UserController::class);
+        route::resource('admin', AdminController::class);
 
 });
+
 
 
 
