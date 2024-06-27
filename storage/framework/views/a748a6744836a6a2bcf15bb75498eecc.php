@@ -12,11 +12,7 @@
                 </li>
                 <?php if(auth()->guard()->check()): ?>
                     <li class="nav-item">
-<<<<<<< HEAD
                         <a class="nav-link" href="/dashboard">Dashboard</a>
-=======
-                        <a class="nav-link" href="dashboard">Dashboard</a>
->>>>>>> cc2f19aacb3c5be07c91745efb4cfd1a12e08eba
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">#</a>

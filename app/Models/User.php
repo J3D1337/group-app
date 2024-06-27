@@ -30,6 +30,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'role'
     ];
 
     /**
@@ -47,6 +48,6 @@ class User extends Authenticatable
 
     public function isAdministrator()
     {
-        return $this->email === 'admin@admin.com';
+        return $this->role === 'admin';
     }
 }
