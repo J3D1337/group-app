@@ -11,7 +11,6 @@
     <title>@yield('title')</title>
   </head>
   <body>
-    @php $navbar = $navbar ?? true; @endphp
     @includeWhen($navbar, 'include.navbar')
     @include('include.alert')
     @yield('content')

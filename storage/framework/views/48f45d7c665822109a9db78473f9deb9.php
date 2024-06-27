@@ -11,7 +11,13 @@
     <title><?php echo $__env->yieldContent('title'); ?></title>
   </head>
   <body>
+<<<<<<< HEAD
     <?php $navbar = $navbar ?? true; ?>
+=======
+    <?php
+        $navbar = $navbar ?? true;
+    ?>
+>>>>>>> cc2f19aacb3c5be07c91745efb4cfd1a12e08eba
     <?php echo $__env->renderWhen($navbar, 'include.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path'])); ?>
     <?php echo $__env->make('include.alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->yieldContent('content'); ?>

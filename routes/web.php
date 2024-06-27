@@ -37,8 +37,11 @@ Route::middleware('auth')->group(function () {
         route::resource('admin', AdminController::class);
 
 });
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> cc2f19aacb3c5be07c91745efb4cfd1a12e08eba
