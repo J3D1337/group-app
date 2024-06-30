@@ -6,14 +6,13 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-//if admin@admin.com is loged in redirect do admin.dashboard if not redirect do users.dashboard
+
     public function dashboard()
     {
-        if (auth()->user()->role == 'admin') {
-            return view('admin.dashboard');
-        } else {
-            return view('users.dashboard');
-        }
- }
+        //include CkeckRole middleware in this logic and return view if admin is logged in if not return to user dashboard
+
+
+    }
+
 }
 

@@ -4,17 +4,30 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Models\AdminModel;
-use Models\UserModel;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
+
 
 class CheckRole
 {
-    public function handle(Request $request, Closure $next, $role)
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->role !== $role) {
-            return redirect('/');
+        if (Auth::check() && Auth::user()->role == 'admin'){
+
+            return $next($request);
+        }
+        if (Auth::check() && Auth::user()->role == 'user'){
+
+            return $next($request);
         }
 
-        return $next($request);
     }
 }

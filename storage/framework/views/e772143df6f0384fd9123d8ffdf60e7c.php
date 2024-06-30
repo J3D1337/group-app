@@ -12,7 +12,7 @@
                 </li>
                 <?php if(auth()->guard()->check()): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">#</a>
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">#</a>

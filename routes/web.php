@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Middleware\isAdmin;
-
+use App\Models\User;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,11 +29,16 @@ Route::post('/register', AuthController::class . '@register')
 Route::middleware('auth')->group(function () {
     Route::get('/logout', AuthController::class . '@logout')
         ->name('logout');
-
         Route::get('/dashboard', AdminController::class . '@dashboard')
         ->name('dashboard');
 
-        Route::resource('users', UserController::class);
-        route::resource('admin', AdminController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('admin', AdminController::class);
 
 });
+
+
+
+
+
+
