@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\AdminModel;
 
 class AdminController extends Controller
 {
 
-    public function dashboard()
+    public function showAdmin()
     {
-        //include CkeckRole middleware in this logic and return view if admin is logged in if not return to user dashboard
 
+        return view('admin.dashboard');
 
     }
 
+
+    public function show(string $id)
+    {
+        $admin = AdminModel::findOrFail($id);
+        $name = $admin->username;
+        return response()->json($name);
+    }
 }
 

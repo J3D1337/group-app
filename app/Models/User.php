@@ -45,18 +45,5 @@ class User extends Authenticatable
         ];
     }
 
-    // Other model properties and methods...
-
-    /**
-     * Check if the user is an administrator.
-     *
-     * @return bool
-     */
-    public function isAdministrator()
-    {
-        //if user is admin redirect to admin dashboard if not redirect to users dashboard
-        return $this->role === 'admin';
-
-    }
 
 }

@@ -10,10 +10,14 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function showUser()
     {
-        $users = User::all();
-        return response()->json($users);
+        if (auth()->user()->is_admin == 1) {
+            return view('admin.dashboard');
+        } else {
+            return view('users.dashboard');
+        }
+
     }
 
     /**
@@ -38,7 +42,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::findOrFail($id);
-        $name = $user->first_name;
+        $name = $user->username;
         return response()->json($name);
     }
 

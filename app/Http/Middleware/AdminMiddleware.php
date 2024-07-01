@@ -9,7 +9,7 @@ use App\Models\User;
 
 
 
-class CheckRole
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,16 +18,11 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role == 'admin'){
-
-            return $next($request);
+        if (!auth()->user()->is_admin = true) {
+            return redirect()->route('users.dashboard'); // Redirect non-admin users to the home route
         }
-        if (Auth::check() && Auth::user()->role == 'user'){
-
-            return $next($request);
-        }
-
+        return $next($request); // Allow access for admin users
     }
 }

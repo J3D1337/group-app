@@ -29,11 +29,13 @@ Route::post('/register', AuthController::class . '@register')
 Route::middleware('auth')->group(function () {
     Route::get('/logout', AuthController::class . '@logout')
         ->name('logout');
-        Route::get('/dashboard', AdminController::class . '@dashboard')
-        ->name('dashboard');
 
-    Route::resource('user', UserController::class);
-    Route::resource('admin', AdminController::class);
+});
+
+Route::middleware('admin')->group(function () {
+    Route::get('/dashboard', App\Http\Controllers\AdminController::class . '@showAdmin')->name('dashboard');
+    Route::get('/dashboard', App\Http\Controllers\UserController::class . '@showUser')->name('dashboard');
+
 
 });
 
